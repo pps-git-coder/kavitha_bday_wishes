@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#060610" />
+  <title>Happy Birthday, Kavitha 🎉</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- GSAP + Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══ LOADING SCREEN ══ -->
+  <div id="loader">
+    <canvas id="loader-stars"></canvas>
+    <div id="loader-content">
+      <div id="loader-icon">✦</div>
+      <p id="loader-quote">"Every birthday marks the beginning<br>of another beautiful chapter."</p>
+      <div id="loader-bar-wrap"><div id="loader-bar"></div></div>
+      <p id="loader-label">Preparing something special…</p>
+      <p id="loader-hint" style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.8rem;">✨ Click a star for a surprise ✨</p>
+      <div id="loader-messages" style="margin-top: 1rem; min-height: 1.2rem; text-align: center; font-size: 0.9rem; color: var(--gold); opacity: 0; transition: opacity 0.3s ease;"></div>
+    </div>
+  </div>
+
+  <!-- ══ MAIN SITE ══ -->
+  <main id="site" class="hidden">
+
+    <audio id="audio" loop preload="auto" playsinline aria-hidden="true">
+      <source src="assets/music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Mouse glow -->
+    <div id="mouse-glow" aria-hidden="true"></div>
+
+    <!-- Floating particles -->
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+    <!-- ══ SECTION 1 · WELCOME ══ -->
+    <section id="sec-welcome" class="full-section">
+      <div class="aurora-bg" aria-hidden="true"></div>
+      <div class="stars-bg" aria-hidden="true"></div>
+      <div class="welcome-card glass-card">
+        <div class="welcome-sparkles" aria-hidden="true"></div>
+        <h1 class="welcome-title">
+          Happy Birthday<br />
+          <span class="name-kavitha">Kavitha</span>
+        </h1>
+        <p class="welcome-sub">
+          Wishing you a day filled with happiness, laughter,<br class="br-desk" />
+          and everything that makes you feel truly celebrated.
+        </p>
+        <button id="btn-begin" class="glow-btn">Begin the Journey ✨</button>
+        <p class="welcome-hint" aria-hidden="true">Tap to start</p>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 2 · GALLERY ══ -->
+    <section id="sec-gallery" class="full-section">
+      <div class="section-header">
+        <p class="section-eyebrow">✦ &nbsp; Memories &nbsp; ✦</p>
+        <h2 class="section-title">Beautiful Moments</h2>
+        <p class="section-sub">Each frame holds a story worth smiling about.</p>
+      </div>
+
+      <div id="gallery-grid">
+        <div class="polaroid-wrap" style="--r:-3deg;--delay:0s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo1.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 1" loading="lazy" decoding="async" /><p>A beautiful day ✨</p></div></div>
+        <div class="polaroid-wrap" style="--r:2deg;--delay:0.08s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo2.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 2" loading="lazy" decoding="async" /><p>Smiles all around 🌸</p></div></div>
+        <div class="polaroid-wrap" style="--r:-1.5deg;--delay:0.16s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo3.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 3" loading="lazy" decoding="async" /><p>Pure joy 💛</p></div></div>
+        <div class="polaroid-wrap" style="--r:3.5deg;--delay:0.24s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo4.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 4" loading="lazy" decoding="async" /><p>Golden moments 🌟</p></div></div>
+        <div class="polaroid-wrap" style="--r:-2.5deg;--delay:0.32s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo5.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 5" loading="lazy" decoding="async" /><p>Always shining ✦</p></div></div>
+        <div class="polaroid-wrap" style="--r:1.5deg;--delay:0.4s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo6.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 6" loading="lazy" decoding="async" /><p>Good vibes only 🎶</p></div></div>
+        <div class="polaroid-wrap" style="--r:-4deg;--delay:0.48s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo7.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 7" loading="lazy" decoding="async" /><p>Warmth &amp; laughter 🌺</p></div></div>
+        <div class="polaroid-wrap" style="--r:2.5deg;--delay:0.56s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo8.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 8" loading="lazy" decoding="async" /><p>Cherished forever 💜</p></div></div>
+        <div class="polaroid-wrap" style="--r:-1deg;--delay:0.64s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo9.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 9" loading="lazy" decoding="async" /><p>Lit from within 🕯️</p></div></div>
+        <div class="polaroid-wrap" style="--r:3deg;--delay:0.72s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo10.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 10" loading="lazy" decoding="async" /><p>Unstoppable 🌙</p></div></div>
+        <div class="polaroid-wrap" style="--r:-2deg;--delay:0.8s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo11.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 11" loading="lazy" decoding="async" /><p>Every season suits you 🍃</p></div></div>
+        <div class="polaroid-wrap" style="--r:1deg;--delay:0.88s"><div class="polaroid"><img class="gallery-img loading" data-src="photos/photo12.webp" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E" alt="Memory 12" loading="lazy" decoding="async" /><p>Keep on glowing ⚡</p></div></div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button id="lightbox-close" aria-label="Close">&times;</button>
+      <button id="lightbox-prev" aria-label="Previous photo">&#8592;</button>
+      <button id="lightbox-next" aria-label="Next photo">&#8594;</button>
+      <div id="lightbox-inner">
+        <img id="lightbox-img" src="" alt="Full size photo" />
+        <p id="lightbox-caption"></p>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 3 · TIMELINE ══ -->
+    <section id="sec-timeline" class="full-section">
+      <div class="section-header">
+        <p class="section-eyebrow">✦ &nbsp; Wishes &nbsp; ✦</p>
+        <h2 class="section-title">What This Year Holds</h2>
+        <p class="section-sub">A handful of hopes written just for you.</p>
+      </div>
+
+      <div id="timeline">
+        <div class="tl-item">
+          <span class="tl-icon">✨</span>
+          <div class="tl-body"><h3>Keep Smiling</h3><p>Your smile has always been one of the most beautiful things about you. May it never fade.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-icon">🌸</span>
+          <div class="tl-body"><h3>UPSC Ambition</h3><p>May this year bring the clarity, confidence, and quiet determination to pursue your UPSC dream — I believe in you completely.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-icon">📚</span>
+          <div class="tl-body"><h3>New Doors Opening</h3><p>May wonderful opportunities find you at just the right moment, opening paths you didn't even imagine.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-icon">🌎</span>
+          <div class="tl-body"><h3>May You Explore</h3><p>New places, new people, new perspectives — may your world grow wider and more beautiful every day.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-icon">💫</span>
+          <div class="tl-body"><h3>Shine in Everything</h3><p>Whatever you put your hands to — may you do it with confidence, grace, and your own unique spark.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-icon">🌙</span>
+          <div class="tl-body"><h3>Rest &amp; Recharge</h3><p>Among the ambition, may you also find peace, stillness, and moments that truly restore your energy.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-icon">🎉</span>
+          <div class="tl-body"><h3>Another Beautiful Year Begins</h3><p>Here's to the next chapter — may it be your most joyful, fulfilling, and memorable one yet.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 4 · LETTER ══ -->
+    <section id="sec-letter" class="full-section">
+      <div class="section-header">
+        <p class="section-eyebrow">✦ &nbsp; A Note &nbsp; ✦</p>
+        <h2 class="section-title">A Letter For You</h2>
+        <p class="section-sub">Tap the envelope to open it.</p>
+      </div>
+
+      <div id="envelope-wrap">
+        <div id="envelope" role="button" tabindex="0" aria-label="Open birthday letter">
+          <div class="env-flap"></div>
+          <div class="env-body">
+            <div class="wax-seal"><span>K</span></div>
+          </div>
+        </div>
+        <p class="envelope-hint">Tap to open</p>
+      </div>
+
+      <!-- Letter Modal -->
+      <div id="letter-modal" role="dialog" aria-modal="true" aria-label="Birthday letter">
+        <div id="letter-paper">
+          <button id="letter-close" aria-label="Close letter">&times;</button>
+          <p class="letter-date">On your special day</p>
+          <h3 class="letter-salutation">Dear Kavitha,</h3>
+          <div id="letter-body"></div>
+          <p class="letter-sign">— With warm wishes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 5 · SURPRISE ══ -->
+    <section id="sec-surprise" class="full-section">
+      <div class="section-header">
+        <p class="section-eyebrow">✦ &nbsp; Surprise &nbsp; ✦</p>
+        <h2 class="section-title">Something Just For You</h2>
+        <p class="section-sub">Tap the gift to open it.</p>
+      </div>
+
+      <div id="gift-stage">
+        <div id="gift-box" role="button" tabindex="0" aria-label="Open gift">
+          <div class="gift-lid">
+            <div class="gift-ribbon-h"></div>
+            <div class="gift-bow">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="gift-base">
+            <div class="gift-ribbon-v"></div>
+          </div>
+        </div>
+        <p class="gift-hint">Tap to unwrap</p>
+
+        <div id="cake-wrap" class="hidden">
+          <div id="cake">
+            <div class="cake-top-tier"></div>
+            <div class="cake-bottom-tier"></div>
+            <div class="candles-row" id="candles-row">
+              <div class="candle"><div class="flame" data-lit="true"></div></div>
+              <div class="candle"><div class="flame" data-lit="true"></div></div>
+              <div class="candle"><div class="flame" data-lit="true"></div></div>
+              <div class="candle"><div class="flame" data-lit="true"></div></div>
+              <div class="candle"><div class="flame" data-lit="true"></div></div>
+            </div>
+          </div>
+          <div id="candle-controls">
+            <p id="blow-hint">🎤 Blow into your mic to extinguish the candles! (uff ani uudu)</p>
+            <button id="btn-blow" class="glow-btn-sm">or else tap to Blow Candles 🕯️ </button>
+          </div>
+          <p id="wish-msg" class="hidden">🎉 Make a Wish! 🎉</p>
+        </div>
+      </div>
+
+      <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+      <canvas id="balloons-canvas" aria-hidden="true"></canvas>
+    </section>
+
+    <!-- ══ SECTION 6 · NIGHT SKY ══ -->
+    <section id="sec-sky" class="full-section">
+      <div class="section-header">
+        <p class="section-eyebrow">✦ &nbsp; The Sky Speaks &nbsp; ✦</p>
+        <h2 class="section-title">Wishes Written in Stars</h2>
+        <p class="section-sub">Touch a star to reveal a wish for you.</p>
+      </div>
+      <canvas id="sky-canvas" aria-label="Interactive star field with birthday wishes"></canvas>
+    </section>
+
+    <!-- ══ SECTION 7 · FINAL ══ -->
+    <section id="sec-final" class="full-section">
+      <canvas id="final-canvas" aria-hidden="true"></canvas>
+      <div class="final-content">
+        <div id="final-cake">
+          <div class="fc-top-tier"></div>
+          <div class="fc-bottom-tier"></div>
+          <div class="fc-candles">
+            <div class="fc-candle"><div class="fc-flame"></div></div>
+            <div class="fc-candle"><div class="fc-flame"></div></div>
+            <div class="fc-candle"><div class="fc-flame"></div></div>
+            <div class="fc-candle"><div class="fc-flame"></div></div>
+            <div class="fc-candle"><div class="fc-flame"></div></div>
+            <div class="fc-candle"><div class="fc-flame"></div></div>
+            <div class="fc-candle"><div class="fc-flame"></div></div>
+          </div>
+        </div>
+        <h2 class="final-title">Happy Birthday, Kavitha 🎂</h2>
+        <p class="final-message">
+          May today bring joy,<br />
+          the coming year bring success,<br />
+          and every new day bring beautiful memories.<br /><br />
+          Keep smiling and keep shining.<br />
+          Your UPSC dream is a part of this wish, and I’ll always support every step you take.<br />
+          Have an amazing birthday!
+        </p>
+
+        <div class="about-kavitha glass-card">
+          <div class="about-kavitha-icon">✦</div>
+          <h3>About Kavitha</h3>
+          <p><strong>Kavitha</strong> comes from the Sanskrit word for “poem,” a name that celebrates creativity, expression, and a thoughtful heart.</p>
+          <p><strong>June 30 Speciality — Eeroju Outfit Day &amp; Meteor Day:</strong> June 30 is National Outfit of the Day, a beautiful excuse to celebrate your effortless style and fearless fashion sense (ofc you had a great fashion sense). It’s also National Meteor Watch Day; like a meteor streaking across the sky, you light up every room with brilliance, warmth, and unforgettable charm.</p>
+        </div>
+
+        <p class="final-gift-note">"Some gifts are bought.<br/>Some are made with time,<br/>poured with creativity,<br/>and crafted by hands that care.<br/><br/>This one carries all of that<br/>every keystroke, every line of code, every thought,<br/>every wish for your happiness.<br/>Made just for you. Just because you matter."</p>
+        <button id="btn-replay" class="glow-btn">✨ Replay the Journey</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
